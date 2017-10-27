@@ -11,6 +11,12 @@ A Falcon app might look like this.
 import falcon
 from falcon_ask import dispatch_request, FalconAskMiddleware, respond
 
+
+def intent_fn(body):
+    # "body" contains request POST data.
+    return "Hello, here's a useless skill I can do for you: Hello, World!"
+
+
 class AlexaResource(object):
     intent_maps = {
         'WhateverIntent': intent_fn
@@ -21,9 +27,11 @@ class AlexaResource(object):
         response = dispatch_request(req)
         return respond(response)
 
+
 app = falcon.API(middleware=[FalconAskMiddleware(AlexaResource)])
 app.add_route('/alexa', AlexaResource())
 ```
+Save above code to `alexa.py` and run via `$ gunicorn alexa:app`. Make sure [gunicorn](http://gunicorn.org/) is installed.
 
 # Installation
 We are not yet in PyPI, so for now we can install via GitHub!
