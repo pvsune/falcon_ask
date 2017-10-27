@@ -34,7 +34,7 @@ app.add_route('/alexa', AlexaResource())
 Save above code to `alexa.py` and run via `$ gunicorn alexa:app`. Make sure [gunicorn](http://gunicorn.org/) is installed.
 
 # Installation
-We are not yet in PyPI, so for now we can install via GitHub!
+We are not yet in [PyPI](https://pypi.python.org/pypi), so for now we can install via  :smiling_imp: :octocat: :octocat: :octocat: :smiling_imp:!
 ```bash
 $ pip install git+https://github.com/pvsune/falcon_ask.git
 ```
