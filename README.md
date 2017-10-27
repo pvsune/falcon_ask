@@ -1,7 +1,7 @@
 # Falcon-Ask
 Minimal Python3 toolkit to create Amazon Alexa skills with [Falcon](https://falconframework.org/). 
 
-Builds on top of Alexa Skills Kit (ASK) to bootstrap boilerplate code so you don't have to!
+Builds on top of [Alexa Skills Kit (ASK)](https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html) to bootstrap boilerplate code so you don't have to!
 
 Inspired by [Flask-Ask](https://github.com/johnwheeler/flask-ask) and [Alexandra](https://github.com/erik/alexandra).
 
