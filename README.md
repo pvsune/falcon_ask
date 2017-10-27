@@ -36,5 +36,5 @@ Save above code to `alexa.py` and run via `$ gunicorn alexa:app`. Make sure [gun
 # Installation
 We are not yet in PyPI, so for now we can install via GitHub!
 ```bash
-pip install git+https://github.com/pvsune/falcon_ask.git
+$ pip install git+https://github.com/pvsune/falcon_ask.git
 ```
