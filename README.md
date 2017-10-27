@@ -38,3 +38,9 @@ We are not yet in [PyPI](https://pypi.python.org/pypi), so for now we can instal
 ```bash
 $ pip install git+https://github.com/pvsune/falcon_ask.git
 ```
+# Thank You
+Thanks for checking this library out! I hope you find it useful.
+
+Of course, there's always room for improvement. Feel free to open an issue so we can make Falcon-Ask better.
+
+Special thanks to [@muxspace](https://github.com/muxspace) for giving me an Echo Dot.
