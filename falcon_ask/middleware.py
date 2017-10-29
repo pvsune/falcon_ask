@@ -75,7 +75,7 @@ class FalconAskMiddleware(object):
     def validate_request_timestamp(self, body, max_diff=150):
         time_str = body.get('request', {}).get('timestamp')
         if not time_str:
-            logger.error('Timestamp not found: %s', req_body)
+            logger.error('Timestamp not found: %s', body)
             return False
 
         req_ts = datetime.strptime(time_str, "%Y-%m-%dT%H:%M:%SZ")
