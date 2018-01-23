@@ -8,27 +8,35 @@ Inspired by [Flask-Ask](https://github.com/johnwheeler/flask-ask) and [Alexandra
 # Synopsis
 A Falcon app might look like this.
 ```python
+import json
+
 import falcon
 from falcon_ask import dispatch_request, FalconAskMiddleware, respond
 
 
 def intent_fn(body):
     # "body" contains request POST data.
-    return "Hello, here's a useless skill I can do for you: Hello, World!"
+    return 'Congratulations! Your new alexa skill works great.'
 
 
 class AlexaResource(object):
+    # Dictionary mapping of "IntentRequest" to function.
     intent_maps = {
-        'WhateverIntent': intent_fn
+        'GreetingIntent': intent_fn,
     }
-    welcome = 'Hi, welcome to my alexa skill.'
-    
+
+    # Message to return when "LaunchRequest" is received.
+    welcome = 'Hi, welcome to your new alexa skill.'
+
     def on_post(self, req, resp):
         response = dispatch_request(req)
-        return respond(response)
+        resp.body = json.dumps(respond(response))
 
 
-app = falcon.API(middleware=[FalconAskMiddleware(AlexaResource)])
+app = falcon.API(middleware=[
+    # Do validation of request certificate and timestamp.
+    FalconAskMiddleware(AlexaResource, validate=True),
+])
 app.add_route('/alexa', AlexaResource())
 ```
 Save above code to `alexa.py` and run via `$ gunicorn alexa:app`. Make sure [gunicorn](http://gunicorn.org/) is installed.
