@@ -75,11 +75,10 @@ def dispatch_request(req):
 
 
 def respond(text=None, ssml=None, attributes=None, reprompt_text=None,
-            reprompt_ssml=None, end_session=True):
+            reprompt_ssml=None, end_session=True, directives=None):
     obj = {
         'version': '1.0',
         'response': {
-            'outputSpeech': {'type': 'PlainText', 'text': ''},
             'shouldEndSession': end_session
         },
         'sessionAttributes': attributes or {}
@@ -98,5 +97,7 @@ def respond(text=None, ssml=None, attributes=None, reprompt_text=None,
 
     if reprompt_output:
         obj['response']['reprompt'] = {'outputSpeech': reprompt_output}
+
+    obj['response']['directives'] = directives or []
 
     return obj
