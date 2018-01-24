@@ -42,6 +42,14 @@ def get_req_type(body):
     return body.get('request', {}).get('type')
 
 
+def get_slots(body):
+    if get_req_type(body) != 'IntentRequest':
+        return {}
+
+    slots = body['request']['intent'].get('slots', {})
+    return {item['name']: item.get('value') for _, item in slots.items()}
+
+
 def dispatch_request(req):
     # Check if req.stream is consumed, otherwise get POST data.
     body = req.context.get('doc') or _get_json_body(req)
