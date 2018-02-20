@@ -30,14 +30,14 @@ class AlexaResource(object):
 
     def on_post(self, req, resp):
         response = dispatch_request(req)
-        resp.body = json.dumps(respond(response))
+        resp.body = json.dumps(respond(response, end_session=False))
 
 
 app = falcon.API(middleware=[
     # Do validation of request certificate and timestamp.
     FalconAskMiddleware(AlexaResource, validate=True),
 ])
-app.add_route('/alexa', AlexaResource())
+app.add_route('/', AlexaResource())
 ```
 Save above code to `alexa.py` and run via `$ gunicorn alexa:app`. Make sure [gunicorn](http://gunicorn.org/) is installed.
 
