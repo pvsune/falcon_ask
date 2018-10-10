@@ -42,6 +42,14 @@ def get_req_type(body):
     return body.get('request', {}).get('type')
 
 
+def get_slots(body):
+    if get_req_type(body) != 'IntentRequest':
+        return {}
+
+    slots = body['request']['intent'].get('slots', {})
+    return {item['name']: item.get('value') for _, item in slots.items()}
+
+
 def dispatch_request(req):
     # Check if req.stream is consumed, otherwise get POST data.
     body = req.context.get('doc') or _get_json_body(req)
@@ -75,11 +83,10 @@ def dispatch_request(req):
 
 
 def respond(text=None, ssml=None, attributes=None, reprompt_text=None,
-            reprompt_ssml=None, end_session=True):
+            reprompt_ssml=None, end_session=True, directives=None):
     obj = {
         'version': '1.0',
         'response': {
-            'outputSpeech': {'type': 'PlainText', 'text': ''},
             'shouldEndSession': end_session
         },
         'sessionAttributes': attributes or {}
@@ -98,5 +105,7 @@ def respond(text=None, ssml=None, attributes=None, reprompt_text=None,
 
     if reprompt_output:
         obj['response']['reprompt'] = {'outputSpeech': reprompt_output}
+
+    obj['response']['directives'] = directives or []
 
     return obj

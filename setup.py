@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='falcon_ask',
-    version='0.0.1',
+    version='1.1.0',
     description='Toolkit for writing Amazon Alexa skills in your Falcon app',
     author='Philamer Sune',
     url='https://github.com/pvsune/falcon_ask',

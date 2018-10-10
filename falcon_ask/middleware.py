@@ -1,4 +1,5 @@
 import base64
+import json
 import logging
 import os.path
 from datetime import datetime
@@ -112,3 +113,14 @@ class FalconAskMiddleware(object):
             logger.error('Missing attribute "intent_maps" in resource.')
             raise falcon.HTTPInternalServerError()
         req.context['intent_maps'] = intent_maps
+
+    def process_response(self, req, resp, resource, req_succeeded):
+        """Always return valid json response.
+
+        If resp.body is not valid json, e.g. string, do respond properly.
+        """
+        body = json.loads(resp.body or '{}')
+        if type(body) == str:
+            # Safer not to end sesion.
+            response = util.respond(body, end_session=False)
+            resp.body = json.dumps(response)
