@@ -1,5 +1,5 @@
 # Falcon-Ask [![Build Status](https://travis-ci.org/pvsune/falcon_ask.svg?branch=master)](https://travis-ci.org/pvsune/falcon_ask)
-Minimal Python3 toolkit to create Amazon Alexa skills with [Falcon](https://falconframework.org/). 
+Minimal Python3 toolkit to create Amazon Alexa skills with [Falcon](https://falconframework.org/).
 
 Builds on top of [Alexa Skills Kit (ASK)](https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html) to bootstrap boilerplate code so you don't have to!
 
@@ -42,10 +42,15 @@ app.add_route('/', AlexaResource())
 Save above code to `alexa.py` and run via `$ gunicorn alexa:app`. Make sure [gunicorn](http://gunicorn.org/) is installed.
 
 # Installation
-We are not yet in [PyPI](https://pypi.python.org/pypi), so for now we can install via  :smiling_imp: :octocat: :octocat: :octocat: :smiling_imp:!
+To install Falcon-Ask, simply use [pipenv](http://pipenv.org/) (or pip, of
+course):
+
 ```bash
-$ pip install git+https://github.com/pvsune/falcon_ask.git
+$ pip install falcon-ask
+✨🍰✨
 ```
+
+Satisfaction guaranteed.
 # Thank You
 Thanks for checking this library out! I hope you find it useful.
 
