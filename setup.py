@@ -26,6 +26,6 @@ setup(
     license='ISC',
     tests_require=['pytest'],
     install_requires=[
-        'pyOpenssl==17.3.0'
+        'pyOpenssl==17.5.0'
     ]
 )
